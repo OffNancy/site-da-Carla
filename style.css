@@ -814,3 +814,57 @@ html, body {
     word-wrap: break-word !important;
   }
 }
+
+/* 📱 CORRIGINDO MENU E BOTÕES DE NAVEGAÇÃO */
+header, .cabecalho, .menu-navegacao {
+  width: 100% !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 999 !important;
+}
+
+/* Ajuste dos links do menu para não ficar cortado */
+nav a, .menu-item {
+  padding: 8px 5px !important;
+  font-size: 15px !important;
+  white-space: nowrap !important;
+}
+
+/* Se tiver botão de menu hambúrguer */
+.menu-hamburguer, .botao-menu {
+  display: block !important;
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 1000 !important;
+}
+
+/* ✉️ CORRIGINDO CAIXA DE CONTATO */
+.caixa-contato, .card-contato {
+  width: 90% !important;
+  max-width: 350px !important;
+  margin: 0 auto !important;
+  padding: 20px 15px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.contato-info {
+  width: 100% !important;
+  text-align: center !important;
+  padding: 0 10px !important;
+  word-wrap: break-word !important;
+}
+
+/* Ajuste dos ícones e textos */
+.contato-info div {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin: 10px 0 !important;
+  width: 100% !important;
+}
+
+.contato-info img, .contato-info i {
+  flex-shrink: 0 !important;
+}
