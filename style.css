@@ -637,3 +637,113 @@ ESTILO DOS BOTÕES DE REDES SOCIAIS
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     color: white;
 }
+
+/* 📱 RESPONSIVIDADE PARA CELULARES ANDROID */
+
+/* Telas pequenas (até 480px) - celulares menores */
+@media (max-width: 480px) {
+    /* Cabeçalho */
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+        font-size: 22px !important;
+    }
+
+    /* Menu de navegação */
+    nav a {
+        font-size: 14px;
+        margin: 0 8px;
+        padding: 5px;
+    }
+
+    /* Seção principal */
+    .banner h1 {
+        font-size: 28px !important;
+    }
+
+    .banner p {
+        font-size: 16px !important;
+        padding: 0 15px;
+    }
+
+    .btn-produtos {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+
+    /* Títulos das seções */
+    h2 {
+        font-size: 24px !important;
+    }
+
+    /* Cards de produtos */
+    .produto-card {
+        width: 100% !important;
+        max-width: 300px;
+        margin: 10px auto;
+    }
+}
+
+/* Telas médias (481px até 768px) - celulares maiores e phablets */
+@media (min-width: 481px) and (max-width: 768px) {
+    header {
+        padding: 15px;
+    }
+
+    .logo {
+        font-size: 26px !important;
+    }
+
+    nav a {
+        font-size: 15px;
+        margin: 0 10px;
+    }
+
+    .banner h1 {
+        font-size: 32px !important;
+    }
+
+    .produto-card {
+        width: 45% !important;
+        margin: 10px 2%;
+    }
+}
+
+/* 📟 RESPONSIVIDADE PARA TABLETS (769px até 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    header {
+        padding: 18px 30px;
+    }
+
+    .banner h1 {
+        font-size: 36px !important;
+    }
+
+    .produto-card {
+        width: 30% !important;
+        margin: 10px 1.5%;
+    }
+
+    .container {
+        max-width: 900px;
+    }
+}
+
+/* ⚠️ Regra importante para TODAS as telas */
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    overflow-x: hidden;
+}
