@@ -1,102 +1,100 @@
 /* ======================================
-CONFIGURAÇÕES GERAIS
+   RESET E BASE GERAL
 ====================================== */
-* {
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-body {
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #fdf9f5;
-    font-family: 'Segoe UI', sans-serif;
     color: #333;
-    line-height: 1.6;
 }
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
-button {
-    cursor: pointer;
-    border: none;
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Espaço extra embaixo por causa do menu fixo no rodapé */
+body {
+    padding-bottom: 70px;
 }
 
 /* ======================================
-HEADER / MENU
+   CABEÇALHO / MENU TOPO
 ====================================== */
 .cabecalho {
     background: linear-gradient(90deg, #8B4513, #D4AF37);
-    padding: 15px 20px;
+    padding: 15px 0;
     box-shadow: 0 2px 10px rgba(0,0,0,0.15);
     position: sticky;
     top: 0;
     z-index: 100;
+    width: 100%;
 }
 
 .container-cabecalho {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
 }
 
 .titulo-logo {
-    color: white;
+    color: #D4AF37;
     font-size: 1.5rem;
+    font-weight: bold;
     display: flex;
     align-items: center;
     gap: 8px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
 .menu-navegacao {
     display: flex;
-    gap: 30px;
+    gap: 25px;
+    margin-left: auto;
 }
 
 .link-menu {
     color: white;
     font-weight: 500;
+    font-size: 0.95rem;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
 .link-menu:hover {
     color: #fff3cd;
 }
 
-.botao-menu-mobile {
-    display: none;
-    background: transparent;
-    color: white;
-    font-size: 1.3rem;
-}
-
 /* ======================================
-BANNER
+   BANNER PRINCIPAL
 ====================================== */
 .banner {
-    background: linear-gradient(rgba(139, 69, 19, 0.7), rgba(212, 175, 55, 0.7)), url('');
+    background: linear-gradient(rgba(139, 69, 19, 0.75), rgba(212, 175, 55, 0.75));
     background-size: cover;
     background-position: center;
     padding: 80px 20px;
     text-align: center;
-    position: relative;
-}
-
-.overlay-banner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.2);
 }
 
 .conteudo-banner {
-    position: relative;
-    z-index: 2;
     max-width: 700px;
     margin: 0 auto;
     color: white;
@@ -111,24 +109,42 @@ BANNER
 .conteudo-banner p {
     font-size: 1.1rem;
     margin-bottom: 25px;
+    line-height: 1.6;
 }
 
-.botao-banner {
+.logo-banner {
+    width: 260px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    display: block;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+    animation: flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+
     background-color: #8B4513;
     color: white;
     padding: 12px 30px;
     border-radius: 8px;
     font-weight: bold;
     display: inline-block;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .botao-banner:hover {
     background-color: #a05a2c;
+    transform: translateY(-2px);
 }
 
 /* ======================================
-SEÇÃO DE PRODUTOS
+   SEÇÃO DE PRODUTOS
 ====================================== */
 .secao-produtos {
     padding: 50px 20px;
@@ -138,14 +154,27 @@ SEÇÃO DE PRODUTOS
 
 .titulo-secao {
     text-align: center;
-    font-size: 2.2rem;
+    font-size: 2rem;
     color: #8B4513;
     margin-bottom: 40px;
+    position: relative;
 }
 
-.Grade-produtos {
+.titulo-secao::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #8B4513, #D4AF37);
+    border-radius: 2px;
+}
+
+.grade-produtos {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
 }
 
@@ -156,56 +185,12 @@ SEÇÃO DE PRODUTOS
     box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     overflow: hidden;
     position: relative;
-    max-width: 350px;
-    margin: 0 auto;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .produto-card:hover {
     transform: translateY(-5px);
-}
-
-.btn-imagem {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 35px;
-    height: 35px;
-}
-
-
-
-/* ======================================
-SEÇÃO DE PRODUTOS
-====================================== */
-.secao-produtos {
-    padding: 50px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.titulo-secao {
-    text-align: center;
-    font-size: 2.2rem;
-    color: #8B4513;
-    margin-bottom: 40px;
-}
-
-/* AQUI É O PRINCIPAL: DEIXA OS CARDS SEPARADOS */
-.Grade-produtos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px; /* espaçamento entre eles */
-}
-
-.produto-card {
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    overflow: hidden;
-    position: relative;
-    max-width: 350px; /* limite do tamanho do card */
-    margin: 0 auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
 .btn-imagem {
@@ -222,18 +207,17 @@ SEÇÃO DE PRODUTOS
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: none;
+    cursor: pointer;
+    z-index: 2;
 }
 
-/* IMAGENS NO TAMANHO PERFEITO */
 .produto-card img {
     width: 100%;
-    height: auto;
-    max-height: 260px;
+    height: 240px;
     object-fit: contain;
     background-color: #ffffff;
     padding: 15px;
-    display: block;
-    margin: 0 auto;
 }
 
 .info-produto {
@@ -243,25 +227,36 @@ SEÇÃO DE PRODUTOS
 
 .info-produto h3 {
     color: #8B4513;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     margin-bottom: 10px;
     font-weight: 600;
 }
 
 .info-produto p {
-    color: #666666;
-    font-size: 0.95rem;
-    margin-bottom: 15px;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    line-height: 1.5;
 }
 
 .preco {
-    color: #D4AF37;
-    font-size: 1.4rem;
+    color: #8B4513;
+    font-size: 1.2rem;
     font-weight: bold;
-    margin-bottom: 18px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.preco-vista {
+    font-size: 0.85rem;
+    color: #D4AF37;
+    font-weight: 600;
 }
 
 .botao-comprar {
+    display: block;
     width: 100%;
     background-color: #8B4513;
     color: white;
@@ -271,6 +266,7 @@ SEÇÃO DE PRODUTOS
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
+    text-align: center;
     transition: all 0.3s ease;
 }
 
@@ -279,71 +275,226 @@ SEÇÃO DE PRODUTOS
     transform: translateY(-2px);
 }
 
-.contatos-rodape {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+/* ======================================
+   SEÇÃO SOBRE / INFORMAÇÕES
+====================================== */
+.secao-informacoes {
+    padding: 60px 20px;
+    background-color: #fdf9f5;
 }
 
-.contatos-rodape p {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.95rem;
+.container-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.contatos-rodape strong {
-    color: #D4AF37;
-}
-.contatos-rodape {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+.card-info {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    border-top: 4px solid #D4AF37;
+    transition: transform 0.3s ease;
 }
 
-.contatos-rodape p {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.95rem;
+.card-info:hover {
+    transform: translateY(-5px);
 }
 
-.contatos-rodape strong {
-    color: #D4AF37;
-}
-.contatos-rodape {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.contatos-rodape p {
+.card-info h3 {
+    color: #8B4513;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.95rem;
 }
 
+.card-info ul {
+    list-style: none;
+    padding: 0;
+    line-height: 2;
+    color: #555;
+}
+
+.card-info p {
+    color: #555;
+    line-height: 1.7;
+}
 
 /* ======================================
-ROBÔ DE ATENDIMENTO - ESTILO COMPLETO
+   SEÇÃO CONTATO
+====================================== */
+.secao-contato {
+    padding: 60px 20px;
+    background-color: white;
+}
+
+.container-contato {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    border-top: 4px solid #D4AF37;
+    text-align: center;
+}
+
+.container-contato p {
+    font-size: 1.05rem;
+    color: #555;
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.container-contato i {
+    color: #D4AF37;
+    font-size: 1.1rem;
+}
+
+/* ======================================
+   RODAPÉ
+====================================== */
+.rodape {
+    background: linear-gradient(90deg, #8B4513, #D4AF37);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-bottom: 70px; /* Espaço para o menu fixo */
+}
+
+.rodape p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+/* ======================================
+   REDES SOCIAIS
+====================================== */
+.redes-sociais {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.redes-sociais h3 {
+    color: white;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+.botao-rede {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin: 0 6px;
+    color: white;
+    font-size: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.botao-rede.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.botao-rede.facebook {
+    background-color: #3b5998;
+}
+
+.botao-rede:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    color: white;
+}
+
+/* ======================================
+   MENU FIXO NO RODAPÉ
+====================================== */
+.menu-rodape {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 65px;
+    box-shadow: 0 -2px 15px rgba(0,0,0,0.12);
+    border-top: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.item-menu-rodape {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: #8B4513;
+    font-size: 0.65rem;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    flex: 1;
+}
+
+.item-menu-rodape i {
+    font-size: 1.25rem;
+}
+
+.item-menu-rodape:hover,
+.item-menu-rodape.ativo {
+    color: #D4AF37;
+}
+
+.item-menu-rodape.destaque-whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    flex: none;
+    margin-top: -18px;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    font-size: 0.6rem;
+}
+
+.item-menu-rodape.destaque-whatsapp i {
+    font-size: 1.5rem;
+}
+
+.item-menu-rodape.destaque-whatsapp:hover {
+    color: white;
+    transform: scale(1.05);
+}
+
+/* ======================================
+   ROBÔ DE ATENDIMENTO
 ====================================== */
 .botao-robo {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
+    bottom: 80px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     background: linear-gradient(90deg, #8B4513, #D4AF37);
     color: white;
-    font-size: 28px;
+    font-size: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -359,10 +510,10 @@ ROBÔ DE ATENDIMENTO - ESTILO COMPLETO
 
 .container-robo {
     position: fixed;
-    bottom: 100px;
-    right: 30px;
-    width: 350px;
-    max-width: calc(100vw - 60px);
+    bottom: 145px;
+    right: 20px;
+    width: 340px;
+    max-width: calc(100vw - 40px);
     background-color: white;
     border-radius: 16px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.15);
@@ -388,11 +539,10 @@ ROBÔ DE ATENDIMENTO - ESTILO COMPLETO
 }
 
 .cabecalho-robo h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     gap: 8px;
-    margin: 0;
 }
 
 .fechar-robo {
@@ -400,26 +550,29 @@ ROBÔ DE ATENDIMENTO - ESTILO COMPLETO
     color: white;
     font-size: 18px;
     padding: 5px;
+    border: none;
+    cursor: pointer;
 }
 
 .conteudo-robo {
     padding: 20px;
-    max-height: 350px;
+    max-height: 300px;
     overflow-y: auto;
     background-color: #fdf9f5;
 }
 
 .mensagem {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     padding: 12px 15px;
     border-radius: 12px;
     max-width: 85%;
     line-height: 1.5;
+    font-size: 0.9rem;
 }
 
 .mensagem.robo {
     background-color: #fff;
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(212, 175, 55, 0.25);
     margin-right: auto;
     border-bottom-left-radius: 4px;
     color: #333;
@@ -435,8 +588,8 @@ ROBÔ DE ATENDIMENTO - ESTILO COMPLETO
 .opcoes-robo {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 15px;
+    gap: 8px;
+    margin-top: 12px;
 }
 
 .btn-opcao {
@@ -447,6 +600,7 @@ ROBÔ DE ATENDIMENTO - ESTILO COMPLETO
     border-radius: 8px;
     text-align: left;
     cursor: pointer;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
 }
 
@@ -456,7 +610,7 @@ ROBÔ DE ATENDIMENTO - ESTILO COMPLETO
 }
 
 .rodape-robo {
-    padding: 15px 20px;
+    padding: 12px 15px;
     display: flex;
     gap: 10px;
     border-top: 1px solid rgba(212, 175, 55, 0.2);
@@ -464,11 +618,11 @@ ROBÔ DE ATENDIMENTO - ESTILO COMPLETO
 
 .rodape-robo input {
     flex: 1;
-    padding: 12px 15px;
+    padding: 10px 14px;
     border: 1px solid #ddd;
     border-radius: 8px;
     outline: none;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 .rodape-robo input:focus {
@@ -476,395 +630,103 @@ ROBÔ DE ATENDIMENTO - ESTILO COMPLETO
 }
 
 .btn-enviar {
-    width: 45px;
-    height: 45px;
+    width: 44px;
+    height: 44px;
     border-radius: 8px;
     background: linear-gradient(90deg, #8B4513, #D4AF37);
     color: white;
-    font-size: 18px;
-}
-
-.titulo-principal {
-    font-size: 3rem;
-    color: #fff3cd;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-    margin-bottom: 10px;
-}
-.nome-destaque {
-    color: #D4AF37; /* Cor dourada */
-    font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
-
-
-/* COR DO NOME CARLA ANTELLO - SOMENTE NO CABEÇALHO */
-.titulo-logo {
-    color: #D4AF37 !important;
-    font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
-
-/* ======================================
-ESTILO DAS SEÇÕES SOBRE E CONTATO
-====================================== */
-.secao-informacoes, .secao-contato {
-    padding: 50px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #fdf9f5;
-}
-
-.titulo-secao {
-    color: #8B4513;
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 40px;
-    position: relative;
-}
-
-.titulo-secao::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, #8B4513, #D4AF37);
-    border-radius: 2px;
-}
-
-.container-info, .container-contato {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
-}
-
-.card-info, .container-contato {
-    background-color: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-    border-top: 4px solid #D4AF37;
-    transition: transform 0.3s ease;
-}
-
-.card-info:hover {
-    transform: translateY(-5px);
-}
-
-.card-info h3 {
-    color: #8B4513;
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.card-info ul {
-    list-style: none;
-    padding: 0;
-    line-height: 2;
-    color: #555;
-}
-
-.card-info p {
-    color: #555;
-    line-height: 1.6;
-}
-
-.container-contato {
-    text-align: center;
-}
-
-.container-contato p {
-    font-size: 1.1rem;
-    color: #555;
-    margin: 10px 0;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-}
-
-.container-contato i {
-    color: #D4AF37;
-    font-size: 1.2rem;
 }
 
 /* ======================================
-ESTILO DOS BOTÕES DE REDES SOCIAIS
+   RESPONSIVIDADE
 ====================================== */
-.redes-sociais {
-    text-align: center;
-    margin: 30px 0;
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+    .grade-produtos {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
 }
 
-.redes-sociais h3 {
-    color: #8B4513;
-    margin-bottom: 15px;
-    font-size: 1.2rem;
+/* Celulares grandes e tablets pequenos (até 768px) */
+@media (max-width: 768px) {
+    /* Esconde menu do topo, usa menu do rodapé */
+    .menu-navegacao {
+        display: none;
+    }
+
+    .conteudo-banner h2 {
+        font-size: 1.8rem;
+    }
+
+    .conteudo-banner p {
+        font-size: 1rem;
+    }
+
+    .banner {
+        padding: 60px 20px;
+    }
+
+    .grade-produtos {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 20px;
+    }
+
+    .titulo-secao {
+        font-size: 1.7rem;
+    }
+
+    .container-info {
+        grid-template-columns: 1fr;
+    }
+
+    .botao-robo {
+        bottom: 80px;
+        right: 15px;
+    }
+
+    .container-robo {
+        bottom: 140px;
+        right: 10px;
+        width: calc(100vw - 20px);
+    }
 }
 
-.botao-rede {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    margin: 0 8px;
-    color: white;
-    font-size: 20px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-}
-
-/* Cores das redes */
-.botao-rede.instagram {
-    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-}
-
-.botao-rede.facebook {
-    background-color: #3b5998;
-}
-
-/* Efeito ao passar o mouse */
-.botao-rede:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    color: white;
-}
-
-/* 📱 RESPONSIVIDADE PARA CELULARES ANDROID */
-
-/* Telas pequenas (até 480px) - celulares menores */
+/* Celulares pequenos (até 480px) */
 @media (max-width: 480px) {
-    /* Cabeçalho */
-    header {
-        flex-direction: column;
-        text-align: center;
-        padding: 10px;
+    .titulo-logo {
+        font-size: 1.2rem;
     }
 
-    .logo {
-        margin-bottom: 10px;
-        font-size: 22px !important;
+    .conteudo-banner h2 {
+        font-size: 1.5rem;
     }
 
-    /* Menu de navegação */
-    nav a {
-        font-size: 14px;
-        margin: 0 8px;
-        padding: 5px;
+    .grade-produtos {
+        grid-template-columns: 1fr;
     }
 
-    /* Seção principal */
-    .banner h1 {
-        font-size: 28px !important;
+    .produto-card img {
+        height: 200px;
     }
 
-    .banner p {
-        font-size: 16px !important;
-        padding: 0 15px;
+    .secao-produtos,
+    .secao-informacoes,
+    .secao-contato {
+        padding: 40px 15px;
     }
 
-    .btn-produtos {
-        padding: 10px 20px;
-        font-size: 15px;
+    .titulo-secao {
+        font-size: 1.5rem;
     }
 
-    /* Títulos das seções */
-    h2 {
-        font-size: 24px !important;
+    .item-menu-rodape span {
+        font-size: 0.6rem;
     }
-
-    /* Cards de produtos */
-    .produto-card {
-        width: 100% !important;
-        max-width: 300px;
-        margin: 10px auto;
-    }
-}
-
-/* Telas médias (481px até 768px) - celulares maiores e phablets */
-@media (min-width: 481px) and (max-width: 768px) {
-    header {
-        padding: 15px;
-    }
-
-    .logo {
-        font-size: 26px !important;
-    }
-
-    nav a {
-        font-size: 15px;
-        margin: 0 10px;
-    }
-
-    .banner h1 {
-        font-size: 32px !important;
-    }
-
-    .produto-card {
-        width: 45% !important;
-        margin: 10px 2%;
-    }
-}
-
-/* 📟 RESPONSIVIDADE PARA TABLETS (769px até 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-    header {
-        padding: 18px 30px;
-    }
-
-    .banner h1 {
-        font-size: 36px !important;
-    }
-
-    .produto-card {
-        width: 30% !important;
-        margin: 10px 1.5%;
-    }
-
-    .container {
-        max-width: 900px;
-    }
-}
-
-/* ⚠️ Regra importante para TODAS as telas */
-* {
-    box-sizing: border-box;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-body {
-    overflow-x: hidden;
-}
-
-
-/* Ajuste especial para Android / Realme */
-@media screen and (max-width: 480px) and (-webkit-device-pixel-ratio: 3) {
-  html {
-    font-size: 15px !important;
-  }
-  .container, main, section {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-  }
-  img {
-    image-rendering: -webkit-optimize-contrast;
-  }
-}
-
-/* Garante que nada vaze a tela */
-* {
-  max-width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  overflow-x: hidden;
-}
-/* 🚫 IMPEDIR ROLAGEM LATERAL (RESOLVE O REALME) */
-html, body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden !important;
-  margin: 0;
-  padding: 0;
-}
-
-* {
-  box-sizing: border-box !important;
-  max-width: 100% !important;
-}
-
-/* ✉️ AJUSTE DA ÁREA DE EMAIL/CONTATO (RESOLVE O ESPAÇO SOBRANDO) */
-.contato, .email, .formulario, .rodape {
-  width: 100% !important;
-  max-width: 100% !important;
-  padding-left: 15px !important;
-  padding-right: 15px !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-/* Ajuste extra para telas Android como Realme */
-@media screen and (max-width: 480px) and (-webkit-device-pixel-ratio: 2), 
-       screen and (max-width: 480px) and (-webkit-device-pixel-ratio: 3) {
-  .container, section, div {
-    width: 100%;
-    max-width: 100%;
-    padding: 0 12px;
-  }
-
-  /* Se o email estiver dentro de um texto ou campo */
-  .email-texto, input, textarea {
-    width: 100% !important;
-    white-space: normal !important;
-    word-wrap: break-word !important;
-  }
-}
-
-/* 📱 CORRIGINDO MENU E BOTÕES DE NAVEGAÇÃO */
-header, .cabecalho, .menu-navegacao {
-  width: 100% !important;
-  overflow: visible !important;
-  position: relative !important;
-  z-index: 999 !important;
-}
-
-/* Ajuste dos links do menu para não ficar cortado */
-nav a, .menu-item {
-  padding: 8px 5px !important;
-  font-size: 15px !important;
-  white-space: nowrap !important;
-}
-
-/* Se tiver botão de menu hambúrguer */
-.menu-hamburguer, .botao-menu {
-  display: block !important;
-  visibility: visible !important;
-  position: relative !important;
-  z-index: 1000 !important;
-}
-
-/* ✉️ CORRIGINDO CAIXA DE CONTATO */
-.caixa-contato, .card-contato {
-  width: 90% !important;
-  max-width: 350px !important;
-  margin: 0 auto !important;
-  padding: 20px 15px !important;
-  box-sizing: border-box !important;
-  overflow: hidden !important;
-}
-
-.contato-info {
-  width: 100% !important;
-  text-align: center !important;
-  padding: 0 10px !important;
-  word-wrap: break-word !important;
-}
-
-/* Ajuste dos ícones e textos */
-.contato-info div {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 8px !important;
-  margin: 10px 0 !important;
-  width: 100% !important;
-}
-
-.contato-info img, .contato-info i {
-  flex-shrink: 0 !important;
 }
